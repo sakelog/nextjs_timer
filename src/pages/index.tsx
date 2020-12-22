@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { setTimeout } from 'timers';
 
+import Header from '../component/header';
+
 const Timer = () => {
   const setTime = 180;
 
@@ -28,6 +30,7 @@ const Timer = () => {
 
   return (
     <div>
+      <Header />
       <span>{TimeConvert(remainTime)}</span>
       <button onClick={CountDown}>start</button>
     </div>
