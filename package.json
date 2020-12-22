@@ -6,6 +6,7 @@
   "author": "sake <sakelog.website@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
