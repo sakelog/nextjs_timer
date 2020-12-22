@@ -3,6 +3,15 @@ import { useState } from 'react';
 import { setTimeout } from 'timers';
 
 import Header from '../component/header';
+import {
+  CssBaseline,
+  Container,
+  Box,
+  Button,
+  Typography,
+} from '@material-ui/core';
+
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 const Timer = () => {
   const setTime = 180;
@@ -29,11 +38,22 @@ const Timer = () => {
   }
 
   return (
-    <div>
+    <Container maxWidth="sm">
       <Header />
-      <span>{TimeConvert(remainTime)}</span>
-      <button onClick={CountDown}>start</button>
-    </div>
+      <CssBaseline />
+      <Box m={1}>
+        <Typography variant="h1" component="p" align="center">
+          {TimeConvert(remainTime)}
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={CountDown}
+          endIcon={<PlayArrowIcon />}
+        >
+          start
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
