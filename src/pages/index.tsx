@@ -18,14 +18,15 @@ const Timer = () => {
 
   const [remainTime, setRemainTime] = useState<number>(setTime);
   var nowTime: number = setTime;
+  var timerID: NodeJS.Timeout;
 
   const CountDown = (): void => {
-    var timer = setInterval(() => {
+    timerID = setInterval(() => {
       nowTime = nowTime - 1;
       setRemainTime(nowTime);
     }, 1000);
     setTimeout(() => {
-      clearInterval(timer);
+      clearInterval(timerID);
     }, setTime * 1000);
   };
 
@@ -50,7 +51,7 @@ const Timer = () => {
           onClick={CountDown}
           endIcon={<PlayArrowIcon />}
         >
-          start
+          スタート
         </Button>
       </Box>
     </Container>
