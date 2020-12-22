@@ -1,0 +1,8 @@
+{
+  "name": "nextjs_timer",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "github-main:sakelog/nextjs_timer.git",
+  "author": "sake <sakelog.website@gmail.com>",
+  "license": "MIT"
+}
