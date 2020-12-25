@@ -1,40 +1,31 @@
 {
   "name": "Nextjs Countdown Timer",
-  "short_name": "Countdown TImer",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "short_name": "countdown timer",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "icons": [
-    {
-     "src":"icon/icon128x128.png",
-     "size":"128x128",
-     "type":"image/png"
-    },
-    {
-     "src":"icon/icon144x144.png",
-     "size":"144x144",
-     "type":"image/png"
-    },
-    {
-     "src":"icon/icon152x152.png",
-     "size":"152x152",
-     "type":"image/png"
-    },
-    {
-     "src":"icon/icon192x192.png",
-     "size":"192x192",
-     "type":"image/png"
-    },
-    {
-     "src":"icon/icon48x48.webp",
-     "size":"48x48",
-     "type":"image/webp"
-    },
-    {
-     "src":"icon/icon.ico",
-     "size":"72x72 96x96 128x128 256x256"
-    }
+  "start_url": "",
+  "background_color": "#83c2dd",
+  "theme_color":"#83c2de",
+  "icons":[
+      
+      {
+          "src": "./icons/icon_72x72.png",
+          "size": "72x72",
+          "type": "image/png"
+      },
+      {
+          "src": "./icons/icon_144x144.png",
+          "size": "144x144",
+          "type": "image/png"
+      },
+      {
+          "src": "./icons/icon_192x192.png",
+          "size":"192x192",
+          "type":"image/png"
+      },
+      {
+          "src": "./icons/icon_512x512.png",
+          "size":"512x512",
+          "type":"image/png"
+      }
   ]
 }
