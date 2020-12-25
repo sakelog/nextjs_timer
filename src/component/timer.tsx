@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import {
   Box,
@@ -15,132 +15,121 @@ import ReplayIcon from '@material-ui/icons/Replay';
 
 import TimeConvert from './timeConvert';
 
-function TimerInit(initialTime: number) {
-  return { remainTime: initialTime };
+function InitState(initialTime: number): reducerState {
+  return {
+    remainTime: initialTime,
+    TimerStopped: true,
+    buttonDisabled: false,
+    alertOpened: false,
+  };
 }
 
-function TimeReducer(state, action) {
-  switch (action.type) {
-    case 'do':
-      return { remainTime: state.remainTime - 1 };
+type reducerState = {
+  remainTime: number;
+  TimerStopped: boolean;
+  buttonDisabled: boolean;
+  alertOpened: boolean;
+};
+type reducerAction = {
+  function?: string;
+  isStopped?: boolean;
+  isDisabled?: boolean;
+  isOpened?: boolean;
+  payload?: number;
+};
+
+const reducer: React.Reducer<reducerState, reducerAction> = (
+  state: reducerState,
+  action: reducerAction
+): any => {
+  var remainTime: number;
+  var TimerStopped: boolean;
+  var buttonDisabled: boolean;
+  var alertOpened: boolean;
+
+  remainTime = state.remainTime;
+  TimerStopped = state.TimerStopped;
+  buttonDisabled = state.buttonDisabled;
+  alertOpened = state.alertOpened;
+
+  TimerStopped = action.isStopped ? true : false;
+  buttonDisabled = action.isDisabled ? true : false;
+  alertOpened = action.isOpened ? true : false;
+
+  switch (action.function) {
     case 'reset':
-      return TimerInit(action.payload);
+      return InitState(action.payload);
+    case 'do':
+      remainTime--;
     default:
-      throw new Error();
+      return {
+        remainTime: remainTime,
+        TimerStopped: TimerStopped,
+        buttonDisabled: buttonDisabled,
+        alertOpened: alertOpened,
+      };
   }
-}
-function FLGReducer(state, action) {
-  switch (action.type) {
-    case 'start':
-      return { procFLG: true };
-    case 'stop':
-      return { procFLG: false };
-    default:
-      throw new Error();
-  }
-}
-function AlertOpen(state, action) {
-  switch (action.type) {
-    case 'open':
-      return { open: true };
-    case 'close':
-      return { open: false };
-    default:
-      throw new Error();
-  }
-}
-function ButtonDisable(state, action) {
-  switch (action.type) {
-    case 'disable':
-      return { start: true };
-    case 'able':
-      return { start: false };
-    default:
-      throw new Error();
-  }
-}
+};
 
 function Timer(initialTime: number) {
-  const [timeCount, timeDispath] = useReducer(
-    TimeReducer,
-    initialTime,
-    TimerInit
-  );
-  const [state, flgDispath] = useReducer(FLGReducer, { procFLG: false });
-  const [aleartState, alertDispath] = useReducer(AlertOpen, { open: false });
-  const [buttonState, buttonDispath] = useReducer(ButtonDisable, {
-    start: false,
-  });
-
-  var timerID;
+  const [state, dispath] = useReducer(reducer, initialTime, InitState);
+  var timerID: NodeJS.Timeout;
   useEffect(() => {
     timerID = setInterval(() => {
-      state.procFLG ? timeDispath({ type: 'do' }) : clearInterval(timerID);
-      timeCount.remainTime - 1 == 0 &&
-        (flgDispath({ type: 'stop' }),
-        alertDispath({ type: 'open' }),
-        buttonDispath({ type: 'disable' }),
-        setTimeout(
-          () => (
-            timeDispath({ type: 'reset', payload: initialTime }),
-            buttonDispath({ type: 'able' })
-          ),
-          5000
-        ));
+      state.remainTime > 0
+        ? state.TimerStopped == false && dispath({ function: 'do' })
+        : (clearInterval(timerID),
+          dispath({ isOpened: true, isDisabled: true }),
+          setTimeout(() => {
+            dispath({
+              function: 'reset',
+              payload: initialTime,
+              isDisabled: false,
+            });
+          }, 5000));
     }, 1000);
     return () => clearInterval(timerID);
   });
 
   return (
-    <>
-      <Box m={1}>
-        <Typography variant="h1" component="p" align="center">
-          {TimeConvert(timeCount.remainTime)}
+    <div>
+      <Box>
+        <Typography variant="h1" component="p">
+          {TimeConvert(state.remainTime)}
         </Typography>
-        <Typography align="center">
-          <ButtonGroup>
-            <Button
-              onClick={() => {
-                flgDispath({ type: 'start' });
-              }}
-              endIcon={<PlayArrowIcon />}
-              disabled={buttonState.start}
-            >
-              start
-            </Button>
-            <Button
-              onClick={() => {
-                flgDispath({ type: 'stop' });
-              }}
-              endIcon={<PauseIcon />}
-            >
-              stop
-            </Button>
-            <Button
-              onClick={() => {
-                timeDispath({ type: 'reset', payload: initialTime });
-                flgDispath({ type: 'stop' });
-              }}
-              endIcon={<ReplayIcon />}
-            >
-              reset
-            </Button>
-          </ButtonGroup>
-        </Typography>
-        <Snackbar
-          open={aleartState.open}
-          autoHideDuration={5000}
-          onClose={() => alertDispath({ type: 'close' })}
-        >
-          <Alert
-            onClose={() => alertDispath({ type: 'close' })}
-            severity="success"
+        <ButtonGroup>
+          <Button
+            onClick={() => dispath({ isStopped: false })}
+            disabled={state.buttonDisabled}
+            endIcon={<PlayArrowIcon />}
           >
-            Time Up!
-          </Alert>
-        </Snackbar>
+            start
+          </Button>
+          <Button
+            onClick={() => dispath({ isStopped: true })}
+            endIcon={<PauseIcon />}
+          >
+            stop
+          </Button>
+          <Button
+            onClick={() => dispath({ function: 'reset', payload: initialTime })}
+            endIcon={<ReplayIcon />}
+          >
+            reset
+          </Button>
+        </ButtonGroup>
       </Box>
-    </>
+
+      <Snackbar
+        open={state.alertOpened}
+        autoHideDuration={5000}
+        onClose={() => dispath({ isOpened: false })}
+      >
+        <Alert onClose={() => dispath({ isOpened: false })} severity="success">
+          Time Up!
+        </Alert>
+      </Snackbar>
+    </div>
   );
 }
 
