@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - sakelog/issue4
 jobs:
   export:
     runs-on: ubuntu-latest
