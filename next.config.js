@@ -6,4 +6,7 @@ module.exports = withPWA({
     dest: 'public',
   },
   assetPrefix: process.env.GITHUB_PAGES ? '/nextjs_timer' : '',
+  publicRuntimeConfig: {
+    basePath: process.env.GITHUB_PAGES ? '/nextjs_timer' : '',
+  },
 });
