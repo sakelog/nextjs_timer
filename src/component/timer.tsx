@@ -92,7 +92,7 @@ function Timer(initialTime: number) {
   });
 
   return (
-    <div>
+    <>
       <Box>
         <Typography variant="h1" component="p">
           {TimeConvert(state.remainTime)}
@@ -129,7 +129,7 @@ function Timer(initialTime: number) {
           Time Up!
         </Alert>
       </Snackbar>
-    </div>
+    </>
   );
 }
 
