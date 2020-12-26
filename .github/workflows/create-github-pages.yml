@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - sakelog/issue1
 jobs:
   export:
     runs-on: ubuntu-latest
@@ -26,6 +27,7 @@ jobs:
         run: yarn run deploy
         env:
           GITHUB_PAGES: true
+          REPOSITORY_NAME: '/nextjs_timer'
       - name: setup Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
