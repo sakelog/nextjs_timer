@@ -14,6 +14,6 @@ module.exports = withPWA({
     dest: 'public',
   },
   basePath: process.env.GITHUB_PAGES
-    ? process.env.GITHUB_REPOSITORY.match(/sakelog\/(.*$)/)
+    ? process.env.GITHUB_REPOSITORY.match(/sakelog\/(.*$)/)(1)
     : '',
 });
