@@ -2,7 +2,7 @@
   "name": "Nextjs Countdown Timer",
   "short_name": "countdown timer",
   "display": "standalone",
-  "start_url": "/nextjs_timer",
+  "start_url": "/nextjs_timer/",
   "background_color": "#83c2dd",
   "theme_color":"#83c2de",
   "icons":[
