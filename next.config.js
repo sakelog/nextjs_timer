@@ -6,7 +6,7 @@ module.exports = withPWA({
     dest: 'public',
     scope: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '/',
     sw: process.env.GITHUB_PAGES
-      ? process.env.REPOSITORY_NAME & '/sw.js'
+      ? process.env.REPOSITORY_NAME + '/sw.js'
       : '/sw.js',
   },
   basePath: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '',
