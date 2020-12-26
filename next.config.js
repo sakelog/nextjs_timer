@@ -12,6 +12,7 @@ module.exports = withPWA({
 module.exports = withPWA({
   pwa: {
     dest: 'public',
+    scope: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '/',
   },
   basePath: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '',
 });
