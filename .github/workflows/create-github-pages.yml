@@ -27,7 +27,8 @@ jobs:
         run: yarn run deploy
         env:
           GITHUB_PAGES: true
-          REPOSITORY_NAME: GITHUB_REPOSITORY
+          REPOSITORY_NAME: ${{env.GITHUB_REPOSITORY}}
+        run: echo ${{env.REPOSITORY_NAME}}
       - name: setup Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
