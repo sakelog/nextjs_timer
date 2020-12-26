@@ -4,9 +4,10 @@ const withPWA = require('next-pwa');
 module.exports = withPWA({
   pwa: {
     dest: 'public',
-    subdomainPrefix: process.env.GITHUB_PAGES
-      ? process.env.REPOSITORY_NAME
-      : '',
+    scope: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '/',
+    sw: process.env.GITHUB_PAGES
+      ? process.env.REPOSITORY_NAME + '/sw.js'
+      : '/sw.js',
   },
   basePath: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '',
 });
