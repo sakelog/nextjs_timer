@@ -5,14 +5,5 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
   },
-  basePath: process.env.GITHUB_PAGES ? '/nextjs_timer' : '',
-});
-*/
-module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-  },
-  basePath: process.env.GITHUB_PAGES
-    ? process.env.GITHUB_REPOSITORY.match(/sakelog\/(.*$)/)
-    : '',
+  basePath: process.env.GITHUB_PAGES ? process.env.REPOSITORY_NAME : '',
 });
