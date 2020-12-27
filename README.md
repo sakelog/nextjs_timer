@@ -10,6 +10,11 @@ Next.jsを使ったカウントダウンタイマーです。
 
 ## 使用している技術
 
+* [Next.js](https://nextjs.org/)
+* [React Redux](https://react-redux.js.org/)
+
+フレームワークとしてNext.jsを使用し、React Reduxでステータスの管理をしています。
+
 ## 使用方法
 
 ### 事前インストールが必要なもの
@@ -37,6 +42,7 @@ v14.14.0
 yarnがインストールされているかは下記コマンドで確認できます。
 
 ```shell
+# yarnのバージョン確認
 yarn -v
 ```
 
