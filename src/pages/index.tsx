@@ -1,10 +1,13 @@
-import Layout from '../component/layout';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
+
+import AppWrapper from '../app/AppWrapper';
 
 const TopPage = () => {
   return (
-    <>
-      <Layout />
-    </>
+    <Provider store={store}>
+      <AppWrapper />
+    </Provider>
   );
 };
 

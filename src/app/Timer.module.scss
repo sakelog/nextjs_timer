@@ -1,0 +1,9 @@
+@use '../styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-default;
+  color: $theme-color-dark;
+  font-weight: 300;
+}

@@ -1,0 +1,37 @@
+@use '../styles/variables' as *;
+@use '../styles/mixin' as *;
+
+.root {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  .button {
+    flex-basis: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.4rem;
+    margin: 1rem;
+
+    border-radius: 0.4rem;
+    background: $theme-color-light;
+    &:hover {
+      background: $theme-color-dark;
+      color: $white;
+    }
+    span {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &.darkmode {
+    .button {
+      color: $primary-darker;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

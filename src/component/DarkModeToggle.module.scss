@@ -1,0 +1,20 @@
+@use '../styles/variables' as *;
+
+.root {
+  .label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: $theme-color-dark;
+    color: $white;
+    border-radius: 100%;
+    width: 6vh;
+    height: 6vh;
+  }
+  &.darkmode {
+    .label {
+      background: $primary-light;
+      color: $primary-darker;
+    }
+  }
+}

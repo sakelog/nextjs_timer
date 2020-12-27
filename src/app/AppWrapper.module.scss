@@ -1,0 +1,11 @@
+@use '../styles/variables' as *;
+
+.root {
+  height: 100vh;
+  overflow-y: auto;
+  background: $white;
+  &.darkmode {
+    color: $primary-light;
+    background: invert($white);
+  }
+}

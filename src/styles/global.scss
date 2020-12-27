@@ -1,0 +1,14 @@
+@use './variables' as *;
+@use './mixin' as *;
+
+// resetcss
+@import '~reset-css-complete/reset.css';
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 4vh;
+  @include mq(md) {
+    font-size: 3vh;
+  }
+}

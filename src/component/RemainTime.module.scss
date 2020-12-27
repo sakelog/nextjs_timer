@@ -1,0 +1,37 @@
+@use '../styles/variables' as *;
+@use '../styles/mixin' as *;
+
+.root {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 2rem auto;
+  .timeString {
+    font-size: 18vw;
+    font-family: 'Major Mono Display', monospace;
+    @include mq(lg) {
+      font-size: 10vw;
+    }
+    font-weight: 400;
+    color: $primary-darker;
+    text-align: right;
+    margin: auto 1rem;
+  }
+  .feedback {
+    height: 4rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: $warning;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 1rem auto;
+  }
+  &.darkmode {
+    .timeString {
+      color: $primary;
+    }
+  }
+}

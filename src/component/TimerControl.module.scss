@@ -1,0 +1,46 @@
+@use '../styles/variables' as *;
+@use '../styles/mixin' as *;
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .buttonGroup {
+    display: flex;
+    flex-direction: row;
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $theme-color;
+      padding: 1rem 0.4rem;
+      &:hover {
+        background: $theme-color-light;
+      }
+      &:first-of-type {
+        border-top-left-radius: 0.4rem;
+        border-bottom-left-radius: 0.4rem;
+        border-bottom: 1px solid $theme-color;
+        border-right: none;
+      }
+      &:last-of-type {
+        border-top-right-radius: 0.4rem;
+        border-bottom-right-radius: 0.4rem;
+        border-top: 1px solid $theme-color;
+        border-left: none;
+      }
+      span {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+  &.darkmode {
+    .button {
+      color: $primary;
+      &:hover {
+        color: $primary-darker;
+      }
+    }
+  }
+}

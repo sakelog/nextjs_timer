@@ -1,0 +1,12 @@
+$font-default: 'Roboto', sans-serif;
+
+$white: #ebf6f7;
+$primary: #abced8;
+$primary-light: lighten($primary, 10%);
+$primary-dark: darken($primary, 40%);
+$primary-darker: darken($primary-dark, 20%);
+$warning: invert($primary-dark);
+
+$theme-color: $primary;
+$theme-color-light: $primary-light;
+$theme-color-dark: $primary-dark;
