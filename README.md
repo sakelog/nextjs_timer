@@ -2,6 +2,14 @@
 
 Next.jsを使ったカウントダウンタイマーです。
 
+**※2022/04/17追記**
+
+**↓React hooksを使用したシンプルな形で作り直しました。↓**
+
+[nextjs_timer_new](https://github.com/sakelog/nextjs_timer_new)
+
+---
+
 ![Github-issues](https://img.shields.io/github/issues/sakelog/nextjs_timer?style=flat-square)
 ![Github-forks](https://img.shields.io/github/forks/sakelog/nextjs_timer?style=flat-square)
 ![Github-stars](https://img.shields.io/github/stars/sakelog/nextjs_timer?style=flat-square)
